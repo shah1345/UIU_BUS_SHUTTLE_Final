@@ -186,8 +186,11 @@ if(!studentID.getText().equals("")){
             try {
 
                 FileWriter out = new FileWriter("src/com/laynezcoder/TinyDatabase/userlogin.txt",true);
+                FileWriter out2 = new FileWriter("src/com/laynezcoder/TinyDatabase/current.txt",false);
                 out.write(data);
+                out2.write(data);
                 out.close();
+                out2.close();
 
                 String LOGIN = "/com/laynezcoder/fxml/MainPage.fxml";
                 try {
@@ -234,8 +237,21 @@ if(!studentID.getText().equals("")){
                 if(Part[0].equals(studentidlog.getText().toUpperCase(Locale.ROOT))){
                     if(Part[1].equals(HashPass(password.getText()))){
                         String LOGIN = "/com/laynezcoder/fxml/MainPage.fxml";
+
+
+
+
+                        FileWriter out = new FileWriter("src/com/laynezcoder/TinyDatabase/current.txt",false);
+                        out.write(data);
+                        out.close();
+
+
+
                         try {
                             Parent root = FXMLLoader.load(getClass().getResource(LOGIN));
+
+
+
                             Main.primaryStage.setScene(new Scene(root));
                             Main.primaryStage.show();
                         } catch (IOException e) {
@@ -257,8 +273,9 @@ if(!studentID.getText().equals("")){
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
 
 
     }

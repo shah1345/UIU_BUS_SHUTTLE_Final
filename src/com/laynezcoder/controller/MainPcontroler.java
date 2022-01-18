@@ -28,7 +28,7 @@ import java.util.Scanner;
 
 public class MainPcontroler implements Initializable {
 
-
+    private String USER_Name= "";
     @FXML
     private WebEngine engine;
 
@@ -139,7 +139,7 @@ public class MainPcontroler implements Initializable {
 
 
     @FXML
-    private Text studentshow;
+    Text studentshow;
 
     @FXML
     private Button Confirmedbtn;
@@ -179,15 +179,14 @@ public class MainPcontroler implements Initializable {
 
 
 
-
-        String location= "src/com/laynezcoder/TinyDatabase/userlogin.txt";
+        String location= "src/com/laynezcoder/TinyDatabase/current.txt";
         try {
             File myObj = new File(location);
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
                 String Part[] = data.split("_");
-
+                USER_Name=Part[2];
                 studentshow.setText(Part[2]+"  "+ Part[0]);
 
             }
